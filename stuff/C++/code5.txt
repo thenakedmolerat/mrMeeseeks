@@ -1,0 +1,74 @@
+#include "stdafx.h"
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int main()
+{
+
+
+
+	
+	double newPrice, Price, amount,result , discountedResult;
+
+int amount;
+
+cout << "How much shirts do you want? " << endl;
+cin >> amount;
+
+if (amount >= 0 && amount <= 4)
+
+{
+	system("cls");
+	newPrice = (amount * Price);
+	discountedResult = ((amount * Price) * .90);
+	cout << "The amount you have entered does not qualifies for a  discount.\n" << endl;
+	cout << "The total cost of your purchase would be:" << result << endl;
+	
+}
+
+if (amount >= 5 && amount <= 10)
+
+{
+	system("cls");
+	newPrice = (amount * Price);
+	discountedResult = ((amount * Price) * .90);
+	cout << "The amount you have entered qualifies for a 10% discount.\n" << endl;
+	cout << "The total cost of your purchase would be:" << result << endl;
+	cout << "\nThe discounted price of your purchase would be:" << discountedResult << endl;
+}
+if (amount >= 11 && amount <= 20)
+{
+	system("cls");
+	result = (amount * Price);
+	discountedResult = ((amount * Price) * .85);
+	cout << "The total amount you have entered, " << amount << ", qualifies for a 15% discount.\n" << endl;
+	cout << "The total cost of your purchase would be:" << result << endl;
+	cout << "\nThe discounted price of your purchase would be:" << discountedResult << endl;
+}
+
+ if (amount >= 21 && amount <= 30)
+
+{
+	system("cls");
+	result = (amount * Price);
+	discountedResult = ((amount * Price) * .80);
+	cout << "The amount you have entered, " << amount << ", qualifies for a 20% discount.\n" << endl;
+	cout << "The total cost of your purchase would be:" << result << endl;
+	cout << "\nThe discounted price of your purchase would be:" << discountedResult << endl;
+}
+ if (amount >= 31)
+
+ {
+	 system("cls");
+	 result = (amount * Price);
+	 discountedResult = ((amount * Price) * .80);
+	 cout << "The amount you have entered, " << amount << ", qualifies for a 25% discount.\n" << endl;
+	 cout << "The total cost of your purchase would be:" << result << endl;
+	 cout << "\nThe discounted price of your purchase would be:" << discountedResult << endl;
+ }
+
+
+return 0;
+}
