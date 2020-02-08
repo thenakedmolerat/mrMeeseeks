@@ -12,6 +12,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -23,11 +25,20 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.border.EtchedBorder;
+
+import pupr.edu.finalProject.common.Cone;
+import pupr.edu.finalProject.common.Cylinder;
+
 import javax.swing.ButtonGroup;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class shapeCalc extends JFrame 
 {
-
+	private Cone cone = new Cone();
+	private Cylinder cylinder = new Cylinder();
 	private JPanel cpMain;
 	private JMenuItem miCone;
 	private JMenuItem miCylinder;
@@ -104,7 +115,7 @@ public class shapeCalc extends JFrame
 	private void initComponents()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 500);
+		setBounds(100, 100, 800, 474);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -143,16 +154,18 @@ public class shapeCalc extends JFrame
 		lblCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 		
 		lblConeImg = new JLabel("");
-		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cone.png")));
+		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cone.png")));
 		
 		lblHeightCone = new JLabel("Height: ");
 		
 		lblRadCone = new JLabel("Radius: ");
 		
 		tfHeightCone = new JTextField();
+		tfHeightCone.setText("0");
 		tfHeightCone.setColumns(10);
 		
 		tfRadCone = new JTextField();
+		tfRadCone.setText("0");
 		tfRadCone.setColumns(10);
 		
 		cbAreaCone = new JCheckBox("Area");
@@ -228,21 +241,21 @@ public class shapeCalc extends JFrame
 		lpCone.setLayout(gl_lpCone);
 		GroupLayout gl_cpMain = new GroupLayout(cpMain);
 		gl_cpMain.setHorizontalGroup(
-			gl_cpMain.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_cpMain.createSequentialGroup()
+			gl_cpMain.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_cpMain.createSequentialGroup()
 					.addGap(1)
-					.addGroup(gl_cpMain.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lpCone, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
-						.addComponent(lpCylinder, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE))
+					.addGroup(gl_cpMain.createParallelGroup(Alignment.LEADING)
+						.addComponent(lpCone, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE)
+						.addComponent(lpCylinder, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 759, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_cpMain.setVerticalGroup(
 			gl_cpMain.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_cpMain.createSequentialGroup()
-					.addComponent(lpCylinder, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)
+					.addComponent(lpCylinder, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lpCone, GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-					.addContainerGap())
+					.addComponent(lpCone, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(232, Short.MAX_VALUE))
 		);
 		
 		lblCyl = new JLabel("Cylinder: ");
@@ -250,22 +263,25 @@ public class shapeCalc extends JFrame
 		lblCyl.setName("lblCylinder");
 		
 		lblCylImg = new JLabel("");
-		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cylinder.png")));
+		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cylinder.png")));
 		
 		lblHeightCyl = new JLabel("Height: ");
 		
 		lblRadCyl = new JLabel("Radius: ");
 		
 		tfHeightCyl = new JTextField();
+		tfHeightCyl.setText("0");
 		tfHeightCyl.setColumns(10);
 		
 		tfRadCyl = new JTextField();
+		tfRadCyl.setText("0");
 		tfRadCyl.setColumns(10);
 		
 		btnCalcCyl = new JButton("Calculate");
 		btnCalcCyl.setSelected(true);
 		
 		cbAreaCyl = new JCheckBox("Area");
+		
 		bgArNVolCyl.add(cbAreaCyl);
 		
 		cbVolumeCyl = new JCheckBox("Volume");
@@ -285,21 +301,20 @@ public class shapeCalc extends JFrame
 						.addGroup(gl_lpCylinder.createSequentialGroup()
 							.addGroup(gl_lpCylinder.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblCyl)
-								.addGroup(gl_lpCylinder.createSequentialGroup()
-									.addComponent(lblHeightCyl)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(tfHeightCyl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblHeightCyl)
 								.addGroup(gl_lpCylinder.createSequentialGroup()
 									.addComponent(lblRadCyl)
 									.addPreferredGap(ComponentPlacement.RELATED)
 									.addGroup(gl_lpCylinder.createParallelGroup(Alignment.LEADING)
 										.addComponent(btnCalcCyl)
-										.addComponent(tfRadCyl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+										.addGroup(gl_lpCylinder.createParallelGroup(Alignment.TRAILING)
+											.addComponent(tfHeightCyl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+											.addComponent(tfRadCyl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
 							.addGap(18)
 							.addGroup(gl_lpCylinder.createParallelGroup(Alignment.LEADING)
 								.addComponent(cbAreaCyl)
 								.addComponent(cbVolumeCyl))
-							.addPreferredGap(ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
 							.addComponent(lblCylImg))
 						.addGroup(gl_lpCylinder.createSequentialGroup()
 							.addComponent(lblResCyl)
@@ -318,8 +333,8 @@ public class shapeCalc extends JFrame
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_lpCylinder.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblHeightCyl)
-								.addComponent(tfHeightCyl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(cbAreaCyl))
+								.addComponent(cbAreaCyl)
+								.addComponent(tfHeightCyl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_lpCylinder.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblRadCyl)
@@ -331,7 +346,7 @@ public class shapeCalc extends JFrame
 					.addGroup(gl_lpCylinder.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblResCyl)
 						.addComponent(lblResFieldCyl))
-					.addContainerGap(168, Short.MAX_VALUE))
+					.addContainerGap(167, Short.MAX_VALUE))
 		);
 		lpCylinder.setLayout(gl_lpCylinder);
 		cpMain.setLayout(gl_cpMain);
@@ -344,6 +359,76 @@ public class shapeCalc extends JFrame
 	/////////////////////////////////
 	private void createEvents()
 	{
+		miExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnCalcCone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cbAreaCone.isSelected()) {
+					cone.calculateArea();
+					lblResFieldCone.setText(Double.toString(cone.getArea()));
+				}
+				else if (cbVolumeCone.isSelected()) {
+					cone.calculateVolume();
+					lblResFieldCone.setText(Double.toString(cone.getVolume()));
+				}
+			}
+		});
+		btnCalcCyl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (cbAreaCyl.isSelected()) {
+					cylinder.calculateArea();
+					lblResFieldCyl.setText(Double.toString(cylinder.getArea()));
+				}
+				else if (cbVolumeCyl.isSelected())
+				{
+					cylinder.calculateVolume();
+					lblResFieldCyl.setText(Double.toString(cylinder.getVolume()));
+				}
+			}
+		});
+		tfHeightCyl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double temp = Double.parseDouble(tfHeightCyl.getText());
+					cylinder.setHeight(temp);
+				} catch (NumberFormatException numberFormatException) {
+					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
+				}
+			}
+		});
+		tfRadCyl.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double temp = Double.parseDouble(tfRadCyl.getText());
+					cylinder.setRadius(temp);
+				} catch (NumberFormatException numberFormatException) {
+					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
+				}
+			}
+		});
+		tfHeightCone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double temp = Double.parseDouble(tfHeightCone.getText());
+					cone.setHeight(temp);
+				} catch (NumberFormatException numberFormatException) {
+					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
+				}
+			}
+		});
+		tfRadCone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					double temp = Double.parseDouble(tfRadCone.getText());
+					cone.setRadius(temp);
+				} catch (NumberFormatException numberFormatException) {
+					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
+				}
+			}
+		});
 		miCone.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -352,7 +437,6 @@ public class shapeCalc extends JFrame
 					lpCone.setVisible(true);
 			}
 		});
-		
 		miCylinder.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
@@ -361,7 +445,5 @@ public class shapeCalc extends JFrame
 				lpCylinder.setVisible(true);
 			}
 		});
-		
-		
 	}
 }
