@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.border.EtchedBorder;
+import javax.swing.ButtonGroup;
 
 public class shapeCalc extends JFrame 
 {
@@ -35,6 +36,10 @@ public class shapeCalc extends JFrame
 	private JLayeredPane lpCylinder;
 	private JTextField tfHeightCyl;
 	private JTextField tfRadCyl;
+	private JTextField tfHeightCone;
+	private JTextField tfRadCone;
+	private final ButtonGroup bgArNVolCyl = new ButtonGroup();
+	private final ButtonGroup bgArNVolCon = new ButtonGroup();
 
 	////////////////////////////////
 	///Launch the application.
@@ -121,13 +126,58 @@ public class shapeCalc extends JFrame
 		
 		JLabel lblConeImg = new JLabel("");
 		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cone.png")));
+		
+		JLabel lblHeightCone = new JLabel("Height: ");
+		
+		JLabel lblRadCone = new JLabel("Radius: ");
+		
+		tfHeightCone = new JTextField();
+		tfHeightCone.setColumns(10);
+		
+		tfRadCone = new JTextField();
+		tfRadCone.setColumns(10);
+		
+		JCheckBox cbAreaCone = new JCheckBox("Area");
+		bgArNVolCon.add(cbAreaCone);
+		
+		JCheckBox cbVolumeCone = new JCheckBox("Volume");
+		bgArNVolCon.add(cbVolumeCone);
+		
+		JButton btnCalcCone = new JButton("Calculate");
+		btnCalcCone.setSelected(true);
+		
+		JLabel lblResCone = new JLabel("Result = ");
+		
+		JLabel lblResFieldCone = new JLabel("n/a");
+		lblResFieldCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
+		lblResFieldCone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		GroupLayout gl_lpCone = new GroupLayout(lpCone);
 		gl_lpCone.setHorizontalGroup(
 			gl_lpCone.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_lpCone.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblCone)
-					.addPreferredGap(ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
+					.addGroup(gl_lpCone.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_lpCone.createSequentialGroup()
+							.addGroup(gl_lpCone.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblCone)
+								.addComponent(lblHeightCone)
+								.addComponent(lblRadCone))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_lpCone.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_lpCone.createSequentialGroup()
+									.addGroup(gl_lpCone.createParallelGroup(Alignment.LEADING)
+										.addComponent(tfHeightCone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(tfRadCone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addGap(18)
+									.addGroup(gl_lpCone.createParallelGroup(Alignment.LEADING)
+										.addComponent(cbVolumeCone)
+										.addComponent(cbAreaCone)))
+								.addComponent(btnCalcCone)))
+						.addGroup(gl_lpCone.createSequentialGroup()
+							.addComponent(lblResCone)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblResFieldCone)))
+					.addPreferredGap(ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
 					.addComponent(lblConeImg)
 					.addContainerGap())
 		);
@@ -137,8 +187,25 @@ public class shapeCalc extends JFrame
 					.addContainerGap()
 					.addGroup(gl_lpCone.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblConeImg)
-						.addComponent(lblCone))
-					.addContainerGap(181, Short.MAX_VALUE))
+						.addGroup(gl_lpCone.createSequentialGroup()
+							.addComponent(lblCone)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_lpCone.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblHeightCone)
+								.addComponent(tfHeightCone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(cbAreaCone))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_lpCone.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblRadCone)
+								.addComponent(tfRadCone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(cbVolumeCone))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnCalcCone)
+							.addGap(18)
+							.addGroup(gl_lpCone.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblResCone)
+								.addComponent(lblResFieldCone))))
+					.addContainerGap(173, Short.MAX_VALUE))
 		);
 		lpCone.setLayout(gl_lpCone);
 		GroupLayout gl_cpMain = new GroupLayout(cpMain);
@@ -178,10 +245,13 @@ public class shapeCalc extends JFrame
 		tfRadCyl.setColumns(10);
 		
 		JButton btnCalcCyl = new JButton("Calculate");
+		btnCalcCyl.setSelected(true);
 		
 		JCheckBox cbAreaCyl = new JCheckBox("Area");
+		bgArNVolCyl.add(cbAreaCyl);
 		
 		JCheckBox cbVolumeCyl = new JCheckBox("Volume");
+		bgArNVolCyl.add(cbVolumeCyl);
 		
 		JLabel lblResCyl = new JLabel("Result = ");
 		
