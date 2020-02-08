@@ -40,6 +40,24 @@ public class shapeCalc extends JFrame
 	private JTextField tfRadCone;
 	private final ButtonGroup bgArNVolCyl = new ButtonGroup();
 	private final ButtonGroup bgArNVolCon = new ButtonGroup();
+	private JCheckBox cbAreaCyl;
+	private JCheckBox cbVolumeCyl;
+	private JButton btnCalcCyl;
+	private JLabel lblResFieldCyl;
+	private JLabel lblRadCyl;
+	private JLabel lblHeightCyl;
+	private JLabel lblCyl;
+	private JLabel lblResCyl;
+	private JLabel lblCylImg;
+	private JLabel lblCone;
+	private JLabel lblHeightCone;
+	private JLabel lblRadCone;
+	private JButton btnCalcCone;
+	private JLabel lblResFieldCone;
+	private JLabel lblResCone;
+	private JCheckBox cbAreaCone;
+	private JCheckBox cbVolumeCone;
+	private JLabel lblConeImg;
 
 	////////////////////////////////
 	///Launch the application.
@@ -86,7 +104,7 @@ public class shapeCalc extends JFrame
 	private void initComponents()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 680, 800);
+		setBounds(100, 100, 800, 500);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -121,15 +139,15 @@ public class shapeCalc extends JFrame
 		lpCone = new JLayeredPane();
 		lpCone.setVisible(false);
 		
-		JLabel lblCone = new JLabel("Cone: ");
+		lblCone = new JLabel("Cone: ");
 		lblCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 		
-		JLabel lblConeImg = new JLabel("");
+		lblConeImg = new JLabel("");
 		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cone.png")));
 		
-		JLabel lblHeightCone = new JLabel("Height: ");
+		lblHeightCone = new JLabel("Height: ");
 		
-		JLabel lblRadCone = new JLabel("Radius: ");
+		lblRadCone = new JLabel("Radius: ");
 		
 		tfHeightCone = new JTextField();
 		tfHeightCone.setColumns(10);
@@ -137,18 +155,18 @@ public class shapeCalc extends JFrame
 		tfRadCone = new JTextField();
 		tfRadCone.setColumns(10);
 		
-		JCheckBox cbAreaCone = new JCheckBox("Area");
+		cbAreaCone = new JCheckBox("Area");
 		bgArNVolCon.add(cbAreaCone);
 		
-		JCheckBox cbVolumeCone = new JCheckBox("Volume");
+		cbVolumeCone = new JCheckBox("Volume");
 		bgArNVolCon.add(cbVolumeCone);
 		
-		JButton btnCalcCone = new JButton("Calculate");
+		btnCalcCone = new JButton("Calculate");
 		btnCalcCone.setSelected(true);
 		
-		JLabel lblResCone = new JLabel("Result = ");
+		lblResCone = new JLabel("Result = ");
 		
-		JLabel lblResFieldCone = new JLabel("n/a");
+		lblResFieldCone = new JLabel("n/a");
 		lblResFieldCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblResFieldCone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		GroupLayout gl_lpCone = new GroupLayout(lpCone);
@@ -227,16 +245,16 @@ public class shapeCalc extends JFrame
 					.addContainerGap())
 		);
 		
-		JLabel lblCyl = new JLabel("Cylinder: ");
+		lblCyl = new JLabel("Cylinder: ");
 		lblCyl.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 		lblCyl.setName("lblCylinder");
 		
-		JLabel lblCylImg = new JLabel("");
+		lblCylImg = new JLabel("");
 		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cylinder.png")));
 		
-		JLabel lblHeightCyl = new JLabel("Height: ");
+		lblHeightCyl = new JLabel("Height: ");
 		
-		JLabel lblRadCyl = new JLabel("Radius: ");
+		lblRadCyl = new JLabel("Radius: ");
 		
 		tfHeightCyl = new JTextField();
 		tfHeightCyl.setColumns(10);
@@ -244,18 +262,18 @@ public class shapeCalc extends JFrame
 		tfRadCyl = new JTextField();
 		tfRadCyl.setColumns(10);
 		
-		JButton btnCalcCyl = new JButton("Calculate");
+		btnCalcCyl = new JButton("Calculate");
 		btnCalcCyl.setSelected(true);
 		
-		JCheckBox cbAreaCyl = new JCheckBox("Area");
+		cbAreaCyl = new JCheckBox("Area");
 		bgArNVolCyl.add(cbAreaCyl);
 		
-		JCheckBox cbVolumeCyl = new JCheckBox("Volume");
+		cbVolumeCyl = new JCheckBox("Volume");
 		bgArNVolCyl.add(cbVolumeCyl);
 		
-		JLabel lblResCyl = new JLabel("Result = ");
+		lblResCyl = new JLabel("Result = ");
 		
-		JLabel lblResFieldCyl = new JLabel("n/a");
+		lblResFieldCyl = new JLabel("n/a");
 		lblResFieldCyl.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblResFieldCyl.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		GroupLayout gl_lpCylinder = new GroupLayout(lpCylinder);
