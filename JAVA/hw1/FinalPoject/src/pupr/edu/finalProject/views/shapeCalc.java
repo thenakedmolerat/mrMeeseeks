@@ -11,6 +11,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class shapeCalc extends JFrame 
 {
@@ -70,8 +71,23 @@ public class shapeCalc extends JFrame
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		JMenuItem miCone = new JMenuItem("Cone");
+		mnFile.add(miCone);
+		
+		JMenuItem miCylinder = new JMenuItem("Cylinder");
+		mnFile.add(miCylinder);
+		
+		JMenuItem miExit = new JMenuItem("Exit");
+		mnFile.add(miExit);
+		
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
+		
+		JMenuItem miHelpCont = new JMenuItem("Help Contents");
+		mnHelp.add(miHelpCont);
+		
+		JMenuItem miAbout = new JMenuItem("About");
+		mnHelp.add(miAbout);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
