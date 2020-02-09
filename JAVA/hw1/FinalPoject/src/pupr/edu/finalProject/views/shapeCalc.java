@@ -26,8 +26,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.border.EtchedBorder;
 
-import pupr.edu.finalProject.common.Cone;
-import pupr.edu.finalProject.common.Cylinder;
+import pupr.edu.finalProject.common.*;
+//import pupr.edu.finalProject.common.Cylinder;
 
 import javax.swing.ButtonGroup;
 import java.beans.PropertyChangeListener;
@@ -154,7 +154,7 @@ public class shapeCalc extends JFrame
 		lblCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 		
 		lblConeImg = new JLabel("");
-		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cone.png")));
+		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cone.png")));
 		
 		lblHeightCone = new JLabel("Height: ");
 		
@@ -263,7 +263,7 @@ public class shapeCalc extends JFrame
 		lblCyl.setName("lblCylinder");
 		
 		lblCylImg = new JLabel("");
-		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cylinder.png")));
+		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cylinder.png")));
 		
 		lblHeightCyl = new JLabel("Height: ");
 		
@@ -359,26 +359,35 @@ public class shapeCalc extends JFrame
 	/////////////////////////////////
 	private void createEvents()
 	{
-		miExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		miExit.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				System.exit(0);
 			}
 		});
-		btnCalcCone.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (cbAreaCone.isSelected()) {
+		btnCalcCone.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (cbAreaCone.isSelected()) 
+				{
 					cone.calculateArea();
 					lblResFieldCone.setText(Double.toString(cone.getArea()));
 				}
-				else if (cbVolumeCone.isSelected()) {
+				else if (cbVolumeCone.isSelected()) 
+				{
 					cone.calculateVolume();
 					lblResFieldCone.setText(Double.toString(cone.getVolume()));
 				}
 			}
 		});
-		btnCalcCyl.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (cbAreaCyl.isSelected()) {
+		btnCalcCyl.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				if (cbAreaCyl.isSelected()) 
+				{
 					cylinder.calculateArea();
 					lblResFieldCyl.setText(Double.toString(cylinder.getArea()));
 				}
@@ -389,42 +398,62 @@ public class shapeCalc extends JFrame
 				}
 			}
 		});
-		tfHeightCyl.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
+		tfHeightCyl.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					double temp = Double.parseDouble(tfHeightCyl.getText());
 					cylinder.setHeight(temp);
-				} catch (NumberFormatException numberFormatException) {
+				} 
+				catch (NumberFormatException numberFormatException) 
+				{
 					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
 				}
 			}
 		});
-		tfRadCyl.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
+		tfRadCyl.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					double temp = Double.parseDouble(tfRadCyl.getText());
 					cylinder.setRadius(temp);
-				} catch (NumberFormatException numberFormatException) {
+				} 
+				catch (NumberFormatException numberFormatException) 
+				{
 					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
 				}
 			}
 		});
-		tfHeightCone.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
+		tfHeightCone.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					double temp = Double.parseDouble(tfHeightCone.getText());
 					cone.setHeight(temp);
-				} catch (NumberFormatException numberFormatException) {
+				} 
+				catch (NumberFormatException numberFormatException) 
+				{
 					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
 				}
 			}
 		});
-		tfRadCone.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
+		tfRadCone.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					double temp = Double.parseDouble(tfRadCone.getText());
 					cone.setRadius(temp);
-				} catch (NumberFormatException numberFormatException) {
+				} 
+				catch (NumberFormatException numberFormatException) 
+				{
 					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
 				}
 			}

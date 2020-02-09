@@ -1,4 +1,4 @@
-package edu.pupr.final_proyect.views;
+package pupr.edu.finalProject.common;
 
 public class Cone implements SurfaceArea, Volume {
 	private double height; //The cone's height.

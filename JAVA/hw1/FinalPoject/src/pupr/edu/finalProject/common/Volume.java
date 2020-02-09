@@ -1,4 +1,4 @@
-package edu.pupr.final_proyect.views;
+package pupr.edu.finalProject.common;
 
 public interface Volume {
 	void calculateVolume();
