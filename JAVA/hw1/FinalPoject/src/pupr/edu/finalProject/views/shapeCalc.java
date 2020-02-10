@@ -154,7 +154,7 @@ public class shapeCalc extends JFrame
 		lblCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 		//Cone Image
 		lblConeImg = new JLabel("");
-		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cone.png")));
+		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cone.png")));
 		//Cone Height Label
 		lblHeightCone = new JLabel("Height: ");
 		//Cone Radius Label
@@ -263,7 +263,7 @@ public class shapeCalc extends JFrame
 		lblCyl.setName("lblCylinder");
 		//Cylinder Image
 		lblCylImg = new JLabel("");
-		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cylinder.png")));
+		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cylinder.png")));
 		//Cylinder Height Label
 		lblHeightCyl = new JLabel("Height: ");
 		//Cylinder Radius Label
