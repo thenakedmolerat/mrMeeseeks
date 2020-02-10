@@ -26,8 +26,8 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.border.EtchedBorder;
 
-import pupr.edu.finalProject.common.*;
-//import pupr.edu.finalProject.common.Cylinder;
+import pupr.edu.finalProject.common.Cone;
+import pupr.edu.finalProject.common.Cylinder;
 
 import javax.swing.ButtonGroup;
 import java.beans.PropertyChangeListener;
@@ -116,69 +116,69 @@ public class shapeCalc extends JFrame
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 474);
-		
+		//Menu Bar
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+		//File Menu Item
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
-		
+		//Cone Menu Item
 		miCone = new JMenuItem("Cone");
 		mnFile.add(miCone);
-		
+		//Cylinder Menu Item
 		miCylinder = new JMenuItem("Cylinder");
 		mnFile.add(miCylinder);
-		
+		//Exit Menu Item
 		miExit = new JMenuItem("Exit");
 		mnFile.add(miExit);
-		
+		//Help Menu
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
-		
+		//Help Contents Menu Item
 		JMenuItem miHelpCont = new JMenuItem("Help Contents");
 		mnHelp.add(miHelpCont);
-		
+		//About Menu Item
 		JMenuItem miAbout = new JMenuItem("About");
 		mnHelp.add(miAbout);
 		cpMain = new JPanel();
 		cpMain.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(cpMain);
-		
+		//Cylinder Layered Pane
 		lpCylinder = new JLayeredPane();
 		lpCylinder.setVisible(false);
-		
+		//Cone Layered Pane
 		lpCone = new JLayeredPane();
 		lpCone.setVisible(false);
-		
+		//Cone Label
 		lblCone = new JLabel("Cone: ");
 		lblCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
-		
+		//Cone Image
 		lblConeImg = new JLabel("");
-		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cone.png")));
-		
+		lblConeImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cone.png")));
+		//Cone Height Label
 		lblHeightCone = new JLabel("Height: ");
-		
+		//Cone Radius Label
 		lblRadCone = new JLabel("Radius: ");
-		
+		//Cone Height Text Field
 		tfHeightCone = new JTextField();
 		tfHeightCone.setText("0");
 		tfHeightCone.setColumns(10);
-		
+		//Cone Radius Text Field
 		tfRadCone = new JTextField();
 		tfRadCone.setText("0");
 		tfRadCone.setColumns(10);
-		
+		//Cone Area Check Box
 		cbAreaCone = new JCheckBox("Area");
 		bgArNVolCon.add(cbAreaCone);
-		
+		//Cone Volume Check Box
 		cbVolumeCone = new JCheckBox("Volume");
 		bgArNVolCon.add(cbVolumeCone);
-		
+		//Cone Calculate Button
 		btnCalcCone = new JButton("Calculate");
 		btnCalcCone.setSelected(true);
-		
+		//Cone Result Label 1
 		lblResCone = new JLabel("Result = ");
-		
+		//Cone Result Label 2
 		lblResFieldCone = new JLabel("n/a");
 		lblResFieldCone.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblResFieldCone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -257,38 +257,37 @@ public class shapeCalc extends JFrame
 					.addComponent(lpCone, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(232, Short.MAX_VALUE))
 		);
-		
+		//Cylinder Label
 		lblCyl = new JLabel("Cylinder: ");
 		lblCyl.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 18));
 		lblCyl.setName("lblCylinder");
-		
+		//Cylinder Image
 		lblCylImg = new JLabel("");
-		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/pupr/edu/finalProject/resources/cylinder.png")));
-		
+		lblCylImg.setIcon(new ImageIcon(shapeCalc.class.getResource("/edu/pupr/finalProyect/resources/cylinder.png")));
+		//Cylinder Height Label
 		lblHeightCyl = new JLabel("Height: ");
-		
+		//Cylinder Radius Label
 		lblRadCyl = new JLabel("Radius: ");
-		
+		//Cylinder Height Text Field
 		tfHeightCyl = new JTextField();
 		tfHeightCyl.setText("0");
 		tfHeightCyl.setColumns(10);
-		
+		//Cylinder Radius Text Field
 		tfRadCyl = new JTextField();
 		tfRadCyl.setText("0");
 		tfRadCyl.setColumns(10);
-		
+		//Cylinder Calculate Button
 		btnCalcCyl = new JButton("Calculate");
 		btnCalcCyl.setSelected(true);
-		
+		//Cylinder Area Check Box
 		cbAreaCyl = new JCheckBox("Area");
-		
 		bgArNVolCyl.add(cbAreaCyl);
-		
+		//Cylinder Volume Check Box
 		cbVolumeCyl = new JCheckBox("Volume");
 		bgArNVolCyl.add(cbVolumeCyl);
-		
+		//Cylinder Result Label 1
 		lblResCyl = new JLabel("Result = ");
-		
+		//Cylinder Result Label 2
 		lblResFieldCyl = new JLabel("n/a");
 		lblResFieldCyl.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblResFieldCyl.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -370,6 +369,24 @@ public class shapeCalc extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				try 
+				{
+					double temp = Double.parseDouble(tfHeightCone.getText());
+					cone.setHeight(temp);
+				} 
+				catch (NumberFormatException numberFormatException) 
+				{
+					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
+				}
+				try 
+				{
+					double temp = Double.parseDouble(tfRadCone.getText());
+					cone.setRadius(temp);
+				} 
+				catch (NumberFormatException numberFormatException) 
+				{
+					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
+				}
 				if (cbAreaCone.isSelected()) 
 				{
 					cone.calculateArea();
@@ -386,22 +403,6 @@ public class shapeCalc extends JFrame
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				if (cbAreaCyl.isSelected()) 
-				{
-					cylinder.calculateArea();
-					lblResFieldCyl.setText(Double.toString(cylinder.getArea()));
-				}
-				else if (cbVolumeCyl.isSelected())
-				{
-					cylinder.calculateVolume();
-					lblResFieldCyl.setText(Double.toString(cylinder.getVolume()));
-				}
-			}
-		});
-		tfHeightCyl.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
 				try 
 				{
 					double temp = Double.parseDouble(tfHeightCyl.getText());
@@ -411,12 +412,6 @@ public class shapeCalc extends JFrame
 				{
 					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
 				}
-			}
-		});
-		tfRadCyl.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
 				try 
 				{
 					double temp = Double.parseDouble(tfRadCyl.getText());
@@ -426,35 +421,14 @@ public class shapeCalc extends JFrame
 				{
 					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
 				}
-			}
-		});
-		tfHeightCone.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				try 
-				{
-					double temp = Double.parseDouble(tfHeightCone.getText());
-					cone.setHeight(temp);
-				} 
-				catch (NumberFormatException numberFormatException) 
-				{
-					JOptionPane.showMessageDialog(null, "Invalid height. Please, enter a valid floating-point number.");
+				if (cbAreaCyl.isSelected()) {
+					cylinder.calculateArea();
+					lblResFieldCyl.setText(Double.toString(cylinder.getArea()));
 				}
-			}
-		});
-		tfRadCone.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				try 
+				else if (cbVolumeCyl.isSelected())
 				{
-					double temp = Double.parseDouble(tfRadCone.getText());
-					cone.setRadius(temp);
-				} 
-				catch (NumberFormatException numberFormatException) 
-				{
-					JOptionPane.showMessageDialog(null, "Invalid radius. Please, enter a valid floating-point number.");
+					cylinder.calculateVolume();
+					lblResFieldCyl.setText(Double.toString(cylinder.getVolume()));
 				}
 			}
 		});
