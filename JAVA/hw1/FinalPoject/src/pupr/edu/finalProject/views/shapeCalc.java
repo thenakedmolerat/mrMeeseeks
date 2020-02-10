@@ -69,6 +69,8 @@ public class shapeCalc extends JFrame
 	private JCheckBox cbAreaCone;
 	private JCheckBox cbVolumeCone;
 	private JLabel lblConeImg;
+	private JMenuItem miHelpCont;
+	private JMenuItem miAbout;
 
 	////////////////////////////////
 	///Launch the application.
@@ -114,6 +116,7 @@ public class shapeCalc extends JFrame
 	/////////////////////////////////
 	private void initComponents()
 	{
+		setTitle("Shape Calculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 474);
 		//Menu Bar
@@ -135,10 +138,10 @@ public class shapeCalc extends JFrame
 		JMenu mnHelp = new JMenu("Help");
 		menuBar.add(mnHelp);
 		//Help Contents Menu Item
-		JMenuItem miHelpCont = new JMenuItem("Help Contents");
+		miHelpCont = new JMenuItem("Help Contents");
 		mnHelp.add(miHelpCont);
 		//About Menu Item
-		JMenuItem miAbout = new JMenuItem("About");
+		miAbout = new JMenuItem("About");
 		mnHelp.add(miAbout);
 		cpMain = new JPanel();
 		cpMain.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -430,6 +433,31 @@ public class shapeCalc extends JFrame
 					cylinder.calculateVolume();
 					lblResFieldCyl.setText(Double.toString(cylinder.getVolume()));
 				}
+			}
+		});
+		miHelpCont.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				JOptionPane.showMessageDialog(null, "This program was created with the intention of providing\n"
+						+"an easy to use calculator that would determine the area\nor volume of the provided shapes.\n"
+						+"There are two menus, one called File which will drop down and\n"
+						+ "display the available shapes, and will also display the Exit button\n"
+						+ "which upon click will close the program. Once a shape is selected there\n"
+						+ "will be two blanks in each shape where you can enter the values for heght\n"
+						+ "and radius of the selected shape. A button below that says Calculate will then\n"
+						+ "calculate and display the results in the Result =  section. The check boxes\n"
+						+ "to the left will allow you to select the desired calculation to be made\n"
+						+ "wether it be Area or Volume.\n");
+			}
+		});
+		miAbout.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				JOptionPane.showMessageDialog(null, "This program was made by:\n"
+						+ "Alerik S. Medina #110209\n"
+						+ "Carlos J. Marcano #104163");
 			}
 		});
 		miCone.addActionListener(new ActionListener() 
